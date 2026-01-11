@@ -1,0 +1,13 @@
+{
+    "github.copilot.chat.anthropic.tools.websearch.enabled": true,
+    "claudeCode.environmentVariables": [
+        
+    ],
+    "claudeCode.initialPermissionMode": "default",
+    "github.copilot.chat.anthropic.tools.websearch.maxUses": 10,
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "claudeCode.useTerminal": false,
+    "claudeCode.allowDangerouslySkipPermissions": false,
+    "claudeCode.disableLoginPrompt": true,
+    "claudeCode.useCtrlEnterToSend": true 
+}
