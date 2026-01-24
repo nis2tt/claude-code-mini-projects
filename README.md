@@ -25,6 +25,7 @@ Here are the topics currently available:
 | `project/subagents` | 🤖 Subagents | Build specialized AI agents within Claude Code like Code Comedy Carl |
 | `project/hooks-notifications` | 🎣 Hooks & Notifications | Automate your workflow with sound notifications and event triggers |
 | `project/hookhub` | 🏢 Hook Hub | Advanced hook management and organization systems |
+| `feature/customized-hooks` | 🛠️ Custom Hooks from Suraj | Learn custom hook creation techniques and best practices |
 
 *More topics might be added, so keep an eye out!*
 
