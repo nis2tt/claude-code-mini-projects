@@ -1,6 +1,11 @@
 {
   "enabledPlugins": {
     "code-review@claude-code-plugins": true,
-    "commit-commands@claude-code-plugins": true
+    "commit-commands@claude-code-plugins": true,
+    "learning-output-style@claude-code-plugins": true
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "echo \"[$CLAUDE_MODEL] Tokens: $CLAUDE_TOTAL_TOKENS\""
   }
 }
