@@ -76,31 +76,36 @@ determine_scope() {
 
 # Generate commit message if not provided
 if [ -z "$1" ]; then
-    COMMIT_TYPE=$(determine_commit_type "$STAGED_FILES")
-    SCOPE=$(determine_scope "$STAGED_FILES")
+    info "Generating pirate commit message with Claude Code CLI..."
 
-    # Count files changed
-    NUM_FILES=$(echo "$STAGED_FILES" | wc -l | xargs)
+    # Get git diff for context
+    DIFF_CONTEXT=$(git diff --cached --stat)
 
-    # Generate description based on changes
-    if [ "$COMMIT_TYPE" = "docs" ]; then
-        DESCRIPTION="update documentation"
-    elif [ "$COMMIT_TYPE" = "test" ]; then
-        DESCRIPTION="update tests"
-    elif [ "$COMMIT_TYPE" = "chore" ]; then
-        DESCRIPTION="update dependencies"
-    else
-        DESCRIPTION="update $NUM_FILES file(s)"
+    # Use Claude Code CLI to generate pirate commit message
+    COMMIT_MSG=$(claude -m "You are a pirate writing git commit messages. Based on these changes:
+
+$DIFF_CONTEXT
+
+Files changed:
+$STAGED_FILES
+
+Write a conventional commit message (type(scope): description) but in pirate speak. Keep it professional but add pirate flavor. Just output the commit message, nothing else. Example format: 'feat(treasure): add new booty to the hold' or 'fix(ship): patch the leaky hull'. Be creative and fun!" 2>/dev/null | head -1)
+
+    # Fallback if Claude CLI fails
+    if [ -z "$COMMIT_MSG" ] || [ $? -ne 0 ]; then
+        warn "Arrr! Claude CLI failed, using fallback message"
+        COMMIT_TYPE=$(determine_commit_type "$STAGED_FILES")
+        SCOPE=$(determine_scope "$STAGED_FILES")
+        NUM_FILES=$(echo "$STAGED_FILES" | wc -l | xargs)
+
+        if [ -n "$SCOPE" ]; then
+            COMMIT_MSG="${COMMIT_TYPE}(${SCOPE}): update $NUM_FILES file(s), savvy?"
+        else
+            COMMIT_MSG="${COMMIT_TYPE}: update $NUM_FILES file(s), yo ho ho!"
+        fi
     fi
 
-    # Build commit message
-    if [ -n "$SCOPE" ]; then
-        COMMIT_MSG="${COMMIT_TYPE}(${SCOPE}): ${DESCRIPTION}"
-    else
-        COMMIT_MSG="${COMMIT_TYPE}: ${DESCRIPTION}"
-    fi
-
-    info "Generated commit message: $COMMIT_MSG"
+    info "Generated pirate commit message: $COMMIT_MSG"
 else
     COMMIT_MSG="$1"
     info "Using provided message: $COMMIT_MSG"

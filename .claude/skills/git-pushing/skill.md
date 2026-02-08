@@ -19,6 +19,7 @@ Automatically activate when the user:
 ## Workflow
 
 **ALWAYS use the script** - do NOT use manual git commands:
+- do NOT use Claude Code or Anthropic as co-author in the commit message.
 
 ```bash
 bash skills/git-pushing/scripts/smart_commit.sh
