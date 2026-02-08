@@ -19,11 +19,12 @@ Automatically activate when the user:
 ## Workflow
 
 **ALWAYS use the script** - do NOT use manual git commands:
-- do NOT include co-author as Claude Code or Anthropic in the commit message.
+
 
 ```bash
 bash skills/git-pushing/scripts/smart_commit.sh
 ```
+**ALWAYS consider in the commit message** - do NOT include co-author as Claude Code or Anthropic Co-Authored-By: Claude <noreply@anthropic.com> in the commit message.
 
 With custom message:
 ```bash
