@@ -4,9 +4,9 @@
         
     ],
     "claudeCode.initialPermissionMode": "default",
-    "github.copilot.chat.anthropic.tools.websearch.maxUses": 10,
+    "github.copilot.chat.anthropic.tools.websearch.maxUses": 20,
     "editor.defaultFormatter": "ms-python.black-formatter",
-    "claudeCode.useTerminal": false,
+    "claudeCode.useTerminal": true,
     "claudeCode.allowDangerouslySkipPermissions": false,
     "claudeCode.disableLoginPrompt": true,
     "claudeCode.useCtrlEnterToSend": true 
